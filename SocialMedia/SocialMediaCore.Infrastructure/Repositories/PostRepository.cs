@@ -29,5 +29,11 @@ namespace SocialMediaCore.Infrastructure.Repositories
             var post = await _socialMediaDBContext.Posts.FirstOrDefaultAsync(p => p.PostId == PostId);
             return post;
         }
+
+        public async Task InsertPost(Post post)
+        {
+            _socialMediaDBContext.Posts.Add(post);
+            await _socialMediaDBContext.SaveChangesAsync();
+        }
     }
 }
